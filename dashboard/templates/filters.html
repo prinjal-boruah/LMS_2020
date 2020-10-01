@@ -1,0 +1,142 @@
+<div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Filters</h5>
+        </div>
+        <div class="ibox-content">
+
+            <form id='filter'>
+
+                <div class="row">
+                    <input type="hidden" name="page" id="page" value={{page}} class="inp-form" />
+                    {% comment %} Date {% endcomment %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group" id="data_5">
+                            <label class="font-noraml" title='form chat'>Lead Date (Chat Date)</label>
+                            <div class="input-daterange input-group" id="datepicker" data-date-end-date="0d">
+                                <input type="text" class="input-sm form-control datepicker" name="startdate"/>
+                                <span class="input-group-addon">to</span>
+                                <input type="text" class="input-sm form-control datepicker" name="enddate"/>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {% if agent_type in agent_type_list %}
+
+                    {% comment %} Builders if fulfilment Agent {% endcomment %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label class="font-noraml">Builders</label>
+                            <div class="input-group">
+                                <select name='builders' data-placeholder="Choose Builders..." class="chosen-select"  multiple style="width:350px;"
+                                    tabindex="2">
+                                    <option value="">Select</option>
+                                    {% for builder in builder_list %}
+                                    <option value="{{ builder.pk }}">{{ builder.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    {% else %}
+
+                    <div class="col-lg-4 col-md-6" style="display:none;">
+                        <div class="form-group">
+                            <label class="font-noraml">Builders</label>
+                            <div class="input-group">
+                                <select name='builders' data-placeholder="Choose Builders..." class="chosen-select"  multiple style="width:350px;"
+                                    tabindex="2">
+                                    <option value="{{ builder.pk }}" selected="selected">{{ builder.name }}</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    {% endif %}
+
+
+                    {% comment %} Project {% endcomment %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label class="font-noraml">Project</label>
+                            <div class="input-group">
+                                <select name='projects' data-placeholder="Choose Projects..." class="chosen-select"  multiple style="width:350px;"
+                                    tabindex="2">
+                                    <option value="">Select</option>
+                                    {% for projects in projects_list %}
+                                    <option value="{{ projects.id }}">{{ projects.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    {% comment %}  Call Status {% endcomment %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label class="font-noraml">Call Status</label>
+                            <div class="input-group">
+                                <select name='call_status'  data-placeholder="Choose Call Status..." class="chosen-select" multiple style="width:350px;"
+                                    tabindex="2">
+                                    {% for call_status in call_status_list %}
+                                    <option value="{{ call_status.pk }}">{{ call_status.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    {% if page == "non_prospect_leads"  or page == "reports"  or page == "agents_activity" or page == "graphs" %}
+                    {% comment %} Lead Status  {% endcomment %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label class="font-noraml">Lead Status</label>
+                            <div class="input-group">
+                                <select name='lead_status' data-placeholder="Choose Lead Status..." class="chosen-select" multiple style="width:350px;"
+                                    tabindex="2">
+                                    {% for lead_status in lead_status_list %}
+                                    <option value="{{ lead_status.pk }}">{{ lead_status.name }} : {{ lead_status.status_type}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                        </div>
+                    </div> 
+                    {% endif %}
+
+                    {% if page == "reports"  or page == "agents_activity" or page == "graphs" %}
+                    {% comment %} Agent List  {% endcomment %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label class="font-noraml">Agents</label>
+                            <div class="input-group">
+                                <select name='agent_list' data-placeholder="Choose Agents..." class="chosen-select" multiple style="width:350px;"
+                                    tabindex="2">
+                                    {% for agent in agent_list %}
+                                    <option value="{{ agent.pk }}">{{ agent.username }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                        </div>
+                    </div> 
+                    {% endif %}
+
+                </div>
+            </form>
+
+            <button type="button" class="btn btn-outline btn-success" onclick = "reportfilter()" >Search</button>
+
+        </div>
+    </div>
+</div>

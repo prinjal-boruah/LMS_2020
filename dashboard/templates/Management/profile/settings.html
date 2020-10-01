@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block container %}
+<div class="row border-bottom white-bg">
+    {% include '../navigation.html' %}
+</div>
+      
+<div class="row wrapper">
+    <div class="col-sm-12 text-center">
+        <h2>
+            <span>Settings</span>
+            <button class="btn btn-primary pull-right m-t-n-xs" style="margin-left: 10px;" id="Save_button"  type="submit"><strong>Save</strong></button>
+
+        </h2>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="ibox-content">
+        <form name="updateform" id="updateform" class="form-horizontal col-sm-offset-3">
+            <input type="hidden" name="id" id="id" value="{{userid}}" class="inp-form" />
+            <div class="form-group"><label class="col-sm-2 control-label">User Name *</label>
+                <div class="col-sm-5">
+                    <input type="text" name="username" id="username" placeholder='User Name' value="{{ userName }}"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group"><label class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-5">
+                    <input type="password" name="password" id="password" placeholder='Password' value="" class="form-control">
+                </div>
+            </div>
+            <div class="form-group"><label class="col-sm-2 control-label">Confirmation Password</label>
+                <div class="col-sm-5">
+                    <input type="password" name="passwordconf" id="passwordconf" placeholder='Password' value="" class="form-control">
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group"><label class="col-sm-2 control-label">First Name </label>
+
+                <div class="col-sm-5">
+                    <input type="text" name="first_name" id="first_name" placeholder='First Name' value="{{ first_name }}"
+                        class="form-control"></div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group"><label class="col-sm-2 control-label">Last Name </label>
+
+                <div class="col-sm-5">
+                    <input type="text" name="last_name" id="last_name" placeholder='Last Name' value="{{ last_name }}"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group"><label class="col-sm-2 control-label">Phone </label>
+
+                <div class="col-sm-5">
+                    <input type="text" name="phone" id="phone" placeholder='Phone' value="{{ phone }}" class="form-control">
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group"><label class="col-sm-2 control-label">Email </label>
+
+                <div class="col-sm-5">
+                    <input type="text" name="mailid" id="mailid" placeholder='Email' value="{{ mailid }}" class="form-control">
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group"><label class="col-sm-2 control-label">Address</label>
+                <div class="col-sm-5">
+                    <input type="text" name="address" id="address" placeholder='Address' value="{{ address }}" class="form-control">
+                </div>
+            </div>
+            <div class="hr-line-dashed">
+
+            </div>
+
+
+
+
+        </form>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+
+
+{% block javascripcontainer %}
+
+
+
+<script src="{% static 'js/custom/lead.js' %}"></script>
+<script src="{% static 'js/custom/notification.js' %}"></script>
+
+
+<script>
+
+$('#Save_button').click(function(){
+    if( $('#password').val() == $('#passwordconf').val() )
+    {
+        $.ajax({
+                type:"POST",
+                url:"/settings/",
+                data: $('#updateform').serialize(),
+                success: function(msg11){
+                    toastr['success']("Saved Successfully");
+                }
+        });
+    }
+    else{
+       
+        toastr['warning']("Password Mismatch");
+    }
+
+});
+
+</script>
+
+{% endblock %}

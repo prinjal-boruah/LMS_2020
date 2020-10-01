@@ -1,0 +1,84 @@
+<div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Filters</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+
+            </div>
+        </div>
+        <div class="ibox-content">
+
+            <form id='filtergraph'>
+
+                <div class="row">
+                    {% comment %} Date {% endcomment %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group" id="data_5">
+                            <label class="font-noraml" title='form chat'>Lead Date (Chat Date)</label>
+                            <div class="input-daterange input-group" id="datepicker" data-date-end-date="0d">
+                                <input type="text" class="input-sm form-control datepicker" name="startdate" />
+                                <span class="input-group-addon">to</span>
+                                <input type="text" class="input-sm form-control datepicker" name="enddate" />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                    {% comment %} Project {% endcomment %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label class="font-noraml">Builder:Project</label>
+                            <div class="input-group">
+                                <select name='projects' data-placeholder="Choose Projects..." class="chosen-select"
+                                    multiple style="width:350px;" tabindex="2">
+                                    <option value="">Select</option>
+                                    {% for projects in projects_list %}
+                                    <option value="{{ projects.id }}">{{ projects.builder }} : {{ projects.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    {% comment %} Agent List {% endcomment %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label class="font-noraml">Agents</label>
+                            <div class="input-group">
+                                <select name='agent_list' data-placeholder="Choose Agents..." class="chosen-select"
+                                    multiple style="width:350px;" tabindex="2">
+                                    {% for agent in agent_list %}
+                                    <option value="{{ agent.pk }}">{{ agent.username }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+            <button type="button" class="btn btn-outline btn-success" onclick="graph()">Search</button>
+
+        </div>
+    </div>
+</div>

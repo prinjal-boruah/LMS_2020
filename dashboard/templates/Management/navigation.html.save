@@ -1,0 +1,103 @@
+<nav class="navbar navbar-static-top" role="navigation">
+    <div class="navbar-header">
+        <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed"
+            type="button">
+            <i class="fa fa-reorder"></i>
+        </button>
+        <a href="#" class="navbar-brand">LMS</a>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+        <ul class="nav navbar-nav">
+
+            <li>
+                <a aria-expanded="false" role="button" href="/management/graphs/"> Graphs </a>
+            </li>
+
+            <li>
+                <a aria-expanded="false" role="button" href="/management/reports/"> Reports</a>
+            </li>
+
+            <li>
+                <a aria-expanded="false" role="button" href="/management/agents_activity/"> Agents Activity </a>
+            </li>
+    
+            <!-- <li>
+                <a aria-expanded="false" role="button" href="/management/users/"> Users </a>
+            </li>
+
+            <li>
+                <a aria-expanded="false" role="button" href="/management/builders/"> Builders </a>
+            </li> -->
+            
+            <!-- <li>
+                    <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Builder <span class="caret"></span></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="/management/builders/">Builders</a></li>
+                        <li><a href="/management/builders_api/">API</a></li>
+                        <li><a href="/management/builders_emails/">Emails</a></li>
+                  
+                    </ul>
+            </li> -->
+
+
+            <li>
+                <a aria-expanded="false" role="button" href="/management/lead_assign/"> Lead Assign </a>
+            </li>
+                
+            <li>
+                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Tracking <span class="caret"></span></a>
+                <ul role="menu" class="dropdown-menu">
+                    <li><a href="/management/live_chats/">Live Chats</a></li>
+                    <li><a href="/management/cron/">Cron</a></li>
+                    <!-- <li><a href="/management/emails/">Emails</a></li>
+                    <li><a href="/management/phone/">Phone</a></li>
+                    <li><a href="/management/builders_mails/">Builders Mails</a></li>
+                    <li><a href="/management/builders_API/">Builders API</a></li> -->
+                </ul>
+            </li>
+            <!--<li>
+                <a aria-expanded="false" role="button" href="/management/onboarding_builders/"> Onboarding Builders </a>
+            </li> -->
+           
+
+            <!-- <li>
+                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Content
+                    Edit <span class="caret"></span></a>
+                <ul role="menu" class="dropdown-menu">
+                    <li><a href="/management/user_roles/">User Roles</a></li>
+                    <li><a href="/management/users/">Users</a></li>
+                    <li><a href="/management/packages/">Packages</a></li>
+                    <li><a href="/management/services/">Services</a></li>
+                    <li><a href="/management/status/">Status</a></li>
+                    <li><a href="/management/call_status_lead_status/">Call Status to Lead Status Maping</a></li>
+                </ul>
+            </li> -->
+
+            <li>
+                <a aria-expanded="false" role="button" href="/management/profile/"> Profile </a>
+            </li>
+
+            
+
+           
+
+
+
+        </ul>
+        <ul class="nav navbar-top-links navbar-right">
+            <li>
+                <span class="m-r-sm text-muted welcome-message">Welcome to {{ user.username }} ({{ user.user_roles }})</span>
+            </li>
+
+
+
+            <li>
+                <a href="/logout/">
+                    <i class="fa fa-sign-out"></i> LogOut
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

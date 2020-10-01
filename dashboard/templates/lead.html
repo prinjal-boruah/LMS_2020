@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block container %}
+
+<div class="row border-bottom white-bg">
+  {% include 'navigation.html' %}
+</div>
+
+<div class="row wrapper">
+  <div class="col-sm-12 text-center">
+    <h2>
+      <button class="btn btn-warning pull-left m-t-n-xs formtype" id="Back_button"  type="submit" style = "display:none;"><strong>Back</strong></button>
+      <span> {{subtitle}} </span> 
+      
+      <button class="btn btn-primary pull-right m-t-n-xs formtype" style="margin-left: 10px; display:none; "  id="Save_button" type="submit" ><strong>Save</strong></button>
+
+      {% comment %} <button class="btn btn-primary pull-right m-t-n-xs formtype" type="submit" style = "display:none;"  id="Save_&_Next_button" ><strong>Save & Next</strong></button> {% endcomment %}
+
+    </h2>
+  </div>
+</div>
+<div class="wrapper">
+
+  <div class="row" id = 'filters'>
+   
+    <div class="row">
+      {% include 'filters.html' %} 
+    </div>
+
+    <div class="row"  id = 'table' >
+      {% include 'table.html' %}
+    </div>
+
+  </div>
+  <div class="row formtype" style = "display:none;" id = "formedit" > 
+  </div> 
+</div>
+
+
+
+
+{% endblock %}
+
+
+{% block javascripcontainer %}
+
+<!-- lead js -->
+<script src="{% static 'js/custom/lead.js' %}"></script>
+<script src="{% static 'js/custom/notification.js' %}"></script>
+
+{% endblock %}

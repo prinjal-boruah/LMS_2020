@@ -1,0 +1,135 @@
+
+<div class="tab-pane" id="edit">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form id="leadEditForm" class="form-horizontal">
+
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input id="username" name="username" type="text" class="form-control" value="{{ lead.name }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-md-offset-1">
+                                <div class="form-group">
+                                    <label class="control-label">Phone Nubmer</label>
+                                    <input id="phoneno" name="phone" type="phone" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3  col-md-offset-1">
+                                <div class="form-group">
+                                    <label>Email address</label>
+                                    <input id="email" name="email" type="text" class="form-control">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Password </label>
+                                    <input id="password" name="password" type="text" class="form-control ">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-md-offset-1">
+                                <div class="form-group">
+                                    <label>First Name </label>
+                                    <input id="first_name" name="first_name" type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-md-offset-1 ">
+                                <div class="form-group">
+                                    <label>Last name</label>
+                                    <input id="last_name" name="last_name" type="text" class="form-control">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input id="address" name="address" type="text" class="form-control ">
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-md-3 col-md-offset-1">
+                                <div class="form-group">
+                                    <label>Activate</label>
+                                    <select class="form-control" name="is_active" id="is_active">
+                                        <option value=True>True</option>
+                                        <option value=False>False</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-md-offset-1 ">
+                                <div class="form-group">
+                                    <label>Builder</label>
+                                    <select class="form-control" name="builder" id="builder">
+                                        <option value="">Select</option>
+                                        {% for builder in builder_list %}
+                                        <option value="{{ builder.pk }}" >{{ builder.name }}</option>
+                                        {% endfor %}
+                                    </select>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>User roles</label>
+                                    <select class="form-control" name="user_roles" id="user_roles">
+                                        <option value="">Select</option>
+                                        {% for user_roles in user_roles_list %}
+                                        <option value="{{ user_roles.pk }}" >
+                                            {{ user_roles.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-md-offset-1">
+                                <div class="form-group">
+                                    <label></label>
+                                    <select class="form-control" name="user_roles" id="user_roles">
+                                        <option value=True>True</option>
+                                        <option value=False>False</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

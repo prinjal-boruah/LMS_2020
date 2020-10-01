@@ -1,0 +1,157 @@
+<div class="tab-pane" id="leadhistory">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="tab-pane active" id="tab-2">
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Type of Contact</th>
+                                    <th>Date Time</th>
+                                    <th>Data</th>
+                                    <th>Next Enquire</th>
+                                    <th>Comments</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for lead_activity in lead_activity_list %}
+                                    <tr>
+                                        <td>
+                                            <span class="label label-primary"><i class="fa fa-check"></i> {{ lead_activity.lead_status.name }}</span>
+                                        </td>
+                                        <td>
+                                            {{ lead_activity.activity_type }}
+                                        </td>
+                                        <td>
+                                            {{ lead_activity.created }}
+                                        </td>
+                                       
+                                        <td>
+                                            {% if lead_activity.telephone %}
+                                            <audio controls>
+                                                <source src="http://recordings.kookoo.in/livprop/livprop_{{lead_activity.telephone.sid}}.mp3"  type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                            {% endif %}
+                                            {% comment %} <a href="">Email Sent</a> {% endcomment %}
+                                        </td>
+                                        <td>
+                                            {{ lead_activity.next_enquiry_date }}
+                                        </td>
+                                        <td>
+                                            <p class="small">
+                                                {{ lead_activity.comment }}
+                                            </p>
+                                        </td>
+
+                                    </tr>
+                                {% endfor %}
+                                {% comment %} <tr>
+                                    <td>
+                                        <span class="label label-primary"><i class="fa fa-check"></i> Completed</span>
+                                    </td>
+                                    <td>
+                                        Mail
+                                    </td>
+                                    <td>
+                                        12.07.2014 10:10:1
+                                    </td>
+                                    <td>
+                                        <a href="">Email Sent</a>
+                                    </td>
+                                    <td>
+                                        <p class="small">
+                                            Lorem Ipsum is that it has a more-or-less normal distribution of letters,
+                                            as opposed to using 'Content here, content here', making it look like
+                                            readable.
+                                        </p>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-primary"><i class="fa fa-check"></i> Accepted</span>
+                                    </td>
+                                    <td>
+                                        Call
+                                    </td>
+                                    <td>
+                                        12.07.2014 10:10:1
+                                    </td>
+                                    <td>
+                                        <audio controls>
+                                            <source src="horse.ogg" type="audio/ogg">
+                                            <source src="horse.mp3" type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <p class="small">
+                                            Various versions have evolved over the years, sometimes by accident,
+                                            sometimes on purpose (injected humour and the like).
+                                        </p>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-primary"><i class="fa fa-check"></i> Sent</span>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        12.07.2014 10:10:1
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <p class="small">
+                                            There are many variations of passages of Lorem Ipsum available, but the
+                                            majority have suffered alteration in some form, by injected humour, or
+                                            randomised words which
+                                        </p>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-primary"><i class="fa fa-check"></i> Reported</span>
+                                    </td>
+                                    <td>
+                                        call and Mail
+                                    </td>
+                                    <td>
+                                        12.07.2014 10:10:1
+                                    </td>
+                                    <td>
+                                        <audio controls>
+                                            <source src="horse.ogg" type="audio/ogg">
+                                            <source src="horse.mp3" type="audio/mpeg">
+                                                Your browser does not support the audio element.
+                                        </audio>
+                                        <br/>
+                                        <a href="">Email Sent</a>
+                                    </td>
+                                    <td>
+                                        <p class="small">
+                                            Latin words, combined with a handful of model sentence structures
+                                        </p>
+                                    </td>
+
+                                </tr> {% endcomment %}
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

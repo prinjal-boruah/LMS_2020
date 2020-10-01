@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{sitetitle}}</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/plugins/jasny/jasny-bootstrap.min.css' %}" rel="stylesheet">
+
+    <script src="{% static 'mail/tinymce/js/tinymce/tinymce.min.js'%}"></script>
+
+</head>
+<body>
+    <form id="id_emailx_formx" method="POST" action="">
+    {% csrf_token %}
+    {% for field in emailform %}
+        {% if not field.label == "Lead id"%}
+            <div class="form-group row">
+                <label for="{{field.label}}" class="col-sm-2 col-form-label">{{field.label}}</label>
+                <div class="col-sm-10">
+                    {{field}}
+                </div>
+            </div>
+        {% else %}
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    {{field}}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <div class="mail-body text-right tooltip-demo">                            
+        <a 
+            class="btn btn-sm btn-primary"
+            style="padding:10px 100px"
+            id="sendmailbuttonx"
+            name="sendmailbuttonx"
+            onclick="submit_emailx()">
+            Send
+        </a>
+    </div>
+    <input id="composer_submit" type="submit" hidden>
+
+</form>
+
+<script>
+    function submit_emailx() {
+        document.getElementById("composer_submit").click();
+    }
+    function load_editor() {
+    if (document.getElementById("id_message_content") == null ) {
+      console.log("null");
+      window.setTimeout("load_editor()", 100);
+    }
+    else {
+       tinymce.init({
+         selector: '#id_message_content',
+         images_upload_url: '/emailx/',
+         height: 500,
+         width: "95%",
+         theme: 'modern',
+         plugins: 'print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor imagetools contextmenu colorpicker textpattern template',
+         toolbar1: 'template formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+         image_advtab: true,
+         relative_urls: false,
+         content_css: [
+           '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+           '//www.tinymce.com/css/codepen.min.css'
+         ],
+         templates: [
+        {% for template in templates %}
+          {title: '{{template.template_name}}', url: "{{template.template_id}}"},
+        {% endfor %}
+        ]
+       }
+       );
+    }
+  }
+  load_editor()
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<nav class="navbar navbar-static-top" role="navigation">
+    <div class="navbar-header">
+        <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed"
+            type="button">
+            <i class="fa fa-reorder"></i>
+        </button>
+        <a href="#" class="navbar-brand">LMS</a>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+        <ul class="nav navbar-nav">
+
+            <li class="active">
+                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Lead<span
+                        class="caret"></span></a>
+                <ul role="menu" class="dropdown-menu">
+                    <li><a href="/lead/new_lead/">New Lead</a></li>
+                    <li><a href="/lead/follow_up/">Follow Up</a></li>
+                    <li><a href="/lead/completed/">Completed</a></li>
+                    <li><a href="/lead/non_prospect_leads/">Non Prospect Leads</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a aria-expanded="false" role="button" href="{% url 'dashboard:settings' %}"> Profile</a>
+            </li>
+
+
+        </ul>
+        <ul class="nav navbar-top-links navbar-right">
+            <li>
+                <span class="m-r-sm text-muted welcome-message">Welcome to {{ USER }}</span>
+            </li>
+            
+            {% include 'incomingalert.html' %}
+            {% include 'alert.html' %}
+            {% include 'notification.html' %}
+            {% include 'info.html' %}
+            
+            <li>
+                <a href="/logout/">
+                    <i class="fa fa-sign-out"></i> LogOut
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

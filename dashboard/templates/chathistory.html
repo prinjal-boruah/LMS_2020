@@ -1,0 +1,37 @@
+<div class="tab-pane active" id="chathistory">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content" id="chaturldiv">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <dl class="dl-horizontal">
+                                <dt>Country:</dt>
+                                <dd>{{chatmessages.Country}}</dd>
+                                <dt>City:</dt>
+                                <dd>{{chatmessages.City}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-lg-6" id="cluster_info">
+                            <dl class="dl-horizontal">
+                                <dt>Visitor Time:</dt>
+                                <dd>{{chatmessages.VisitorTime}}</dd>
+                                <dt>Referral url:</dt>
+                                <dd>{{chatmessages.Referralurl}}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <hr>
+                    {% for eachmessage in chatmessages.chatmessage %}
+                        {% if eachmessage.person != 'None' %}    
+                        <p><span class="text-navy " href="#">{{eachmessage.person}}: </span> {{eachmessage.message}}</p><br>
+                        {% endif %}
+                      
+                    {% endfor %}
+                    
+                </div>  
+            </div>
+        </div>
+   
+    </div>
+</div>

@@ -1,0 +1,116 @@
+<div class="ibox-content">
+      <div class="row">
+        <div class="col-lg-4">
+          <dl class="dl-horizontal">
+            <dt>Visitor ID:</dt>
+            <dd>{{ lead.visitor_id }} ( {{lead.id}} )</dd>
+
+            <dt>Lead Status:</dt>
+            <dd> <span class="label label-primary">{{lead.last_lead_activity.lead_status.name}}</span>
+            </dd>
+            <dt>Calling Status:</dt>
+            <dd>
+              <span  class="label label-primary ">{{lead.last_lead_activity.call_status.name}}</span>
+            </dd>
+
+
+            
+            
+            
+          
+          
+
+          </dl>
+        </div>
+        <div class="col-lg-4" id="cluster_info">
+          <dl class="dl-horizontal">
+            
+            <dt>Builder:</dt>
+            <dd>{{ lead.builder.name }}</dd>
+            <dt>Project:</dt>
+            <dd>{{ lead.project.name }}</dd>
+            <dt>Chat Date:</dt>
+            <dd>{{ lead.source_date }}</dd>
+            
+            
+          </dl>
+        </div>
+
+        <div class="col-lg-4" id="cluster_info">
+          <dl class="dl-horizontal">
+           
+            <dt>Last Updated:</dt>
+            <dd>{{ lead.created }}</dd>
+            <dt>Telephone Status:</dt>
+            <dd><span class="label label-primary " id="CallStatus"></span></dd>
+            <dt>Calling ID:</dt>
+            <dd><span id="CallSID"></span></dd>
+            <dd>
+              
+            </dd>
+          </dl>
+        </div>
+
+
+
+     
+      </div>
+
+      <div class="hr-line-solid" style='margin: 0px;'></div>
+      
+      <div class="row m-t-sm">
+        <div class="col-lg-12">
+          <div class="panel blank-panel">
+            <div class="panel-heading">
+              <div class="panel-options">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#chathistory" data-toggle="tab">Chat History</a></li>
+                  <li class=""><a href="#telephone" data-toggle="tab">Telephone</a></li>
+                  <li class=""><a href="#edit" data-toggle="tab">Lead Edit</a></li>
+                  <li class=""><a href="#email" data-toggle="tab">Email</a></li>
+                  <li class=""><a href="#leadhistory" data-toggle="tab">Lead History</a></li>
+                  <li class=""><a href="#leadstatus" data-toggle="tab">Lead Status</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="panel-body">
+
+              <div class="tab-content">
+                
+                {% include 'chathistory.html' %}
+                {% include 'telephone.html' %}
+                {% include 'edit.html' %}
+                {% include 'email.html' %}
+                {% include 'leadhistory.html' %} 
+                {% include 'leadstatus.html' %} 
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  <script>
+      $(document).ready(function(e) {
+      var today = new Date();
+      var tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
+      $('.input-group.date').datepicker({
+      todayBtn: "linked",
+      keyboardNavigation: false,
+      forceParse: false,
+      calendarWeeks: true,
+      autoclose: true,
+      format:'yyyy-mm-dd',
+
+      });
+
+
+  });
+  </script>
+  <style>
+      .datepicker{z-index:1151 !important;}
+  </style>
